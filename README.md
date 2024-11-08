@@ -14,3 +14,7 @@
     - 02: 대소문자 변환
         - 주요 method
             - Character.isUpperCase(char c): char 자료형 대문자인지 확인
+    - 03: 문장 속 단어
+        - 주요 method
+            - Scanner.nextLine(): Scanner 단어가 아닌 한 줄로 파라미터 전달받는법
+            - String.split(String s): 문자열 기반으로 대상 문자열 String[]로 나누기

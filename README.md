@@ -44,4 +44,10 @@
     - 05: 특정 문자 뒤집기
         - 주요 method
             - Character.isAlphabetic(Char c): Char 자료형 알파벳 체크
+    - 06: 중복문자제거
+        - 주요 method
+            - String.indexOf(String s): 주어진 문자열 s 앞에서부터 (index: 0) 지정한 searchValue가 처음으로 발견되는 위치의 index 반환한다.
+    - 07: 회문 문자열
+        - 주요 method
+            - String.equalsIgnoreCase(String s): 문자열 비교시 대소문자 구분하지 않음
     

@@ -50,4 +50,7 @@
     - 07: 회문 문자열
         - 주요 method
             - String.equalsIgnoreCase(String s): 문자열 비교시 대소문자 구분하지 않음
+    - 08: 유효한 팰린드롬
+        - 주요 method
+            - String.replaceAll(String regex, String replace): 정규식으로 문자열 체크 후 교체
     

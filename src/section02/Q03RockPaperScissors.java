@@ -3,7 +3,7 @@ package section02;
 import java.util.*;
 
 /*
-section: 02-02
+section: 02-03
 title: 가위 바위 보
 [설명]
 A, B 두 사람이 가위바위보 게임을 합니다. 총 N번의 게임을 하여 A가 이기면 A를 출력하고, B가 이기면 B를 출력합니다. 비길 경우에는 D를 출력합니다.

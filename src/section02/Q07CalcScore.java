@@ -46,7 +46,7 @@ public class Q07CalcScore {
         int[] resultList = new int[n];
 
         for (int i = 0; i < n; i++) {
-            resultList[i] = sc.nextInt()
+            resultList[i] = sc.nextInt();
         }
 
         System.out.println(t.solution(resultList));

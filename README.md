@@ -53,4 +53,91 @@
     - 08: 유효한 팰린드롬
         - 주요 method
             - String.replaceAll(String regex, String replace): 정규식으로 문자열 체크 후 교체
-    
+- Section 2
+    - 08: 등수 구하기
+        - 주요 method
+            ## Java 배열 내림차순 정렬 예제
+            이 저장소는 Java의 Stream API를 이용하여 `int[]` 배열을 내림차순으로 정렬하는 예제를 포함하고 있습니다. 이 접근 방식은 특히 최신 Java 버전(Java 8 이상)에서 기본적인 정렬 작업을 쉽게 처리하는 데 유용합니다.
+
+            ## 코드 개요
+            이 코드는 기본 타입 `int[]` 배열을 객체화된 `Stream<Integer>`로 변환하고, 내림차순으로 정렬한 후 다시 기본 타입 배열로 변환하는 과정을 보여줍니다. 아래는 핵심 예제입니다:
+
+            ```java
+            import java.util.Arrays;
+            import java.util.Collections;
+
+            public class DescendingSortExample {
+                public static void main(String[] args) {
+                    int[] resultList = {5, 2, 9, 1, 5, 6};
+                    
+                    int[] sortedResultList = Arrays.stream(resultList)
+                            .boxed() // int 값을 Integer 객체로 변환
+                            .sorted(Collections.reverseOrder()) // 내림차순으로 정렬
+                            .mapToInt(Integer::intValue) // 다시 Integer를 int로 변환
+                            .toArray(); // 결과를 int[] 배열로 수집
+                    
+                    System.out.println(Arrays.toString(sortedResultList));
+                }
+            }
+            ```
+
+            ### 단계별 설명
+
+            - **1단계: `int[]`를 `IntStream`으로 변환**
+            ```java
+            Arrays.stream(resultList)
+            ```
+            - `int[]` 배열을 `IntStream`으로 변환하여 스트림 작업을 할 수 있게 만듭니다.
+
+            - **2단계: 원시 타입을 `Stream<Integer>`로 변환**
+            ```java
+            .boxed()
+            ```
+            - 각 원소를 원시 타입 `int`에서 `Integer` 객체로 변환합니다. 이는 `Collections.reverseOrder()`로 내림차순 정렬을 하기 위해 필요합니다.
+
+            - **3단계: 내림차순으로 정렬**
+            ```java
+            .sorted(Collections.reverseOrder())
+            ```
+            - `Collections.reverseOrder()`를 사용해 스트림을 내림차순으로 정렬합니다.
+
+            - **4단계: 다시 `IntStream`으로 변환**
+            ```java
+            .mapToInt(Integer::intValue)
+            ```
+            - 각 `Integer` 객체를 원시 타입 `int`로 변환하여 `IntStream`을 생성합니다.
+
+            - **5단계: 배열로 수집**
+            ```java
+            .toArray()
+            ```
+            - 최종적으로 `IntStream`을 `int[]` 배열로 변환합니다.
+
+            ### 주요 메서드
+
+            - **`String.replaceAll(String regex, String replace)`**: 정규식을 사용하여 문자열을 검사한 후 일치하는 부분을 교체합니다.
+            - **`Arrays.stream(int[] array)`**: 기본 타입 배열을 스트림으로 변환하여 스트림 작업을 할 수 있게 합니다.
+            - **`Stream<T>.sorted(Comparator<? super T> comparator)`**: 스트림의 요소를 주어진 비교자에 따라 정렬합니다.
+            - **`IntStream.mapToInt(ToIntFunction<? super T> mapper)`**: 객체 타입 스트림을 원시 타입 스트림으로 변환합니다.
+
+            ### 출력 예시
+
+            입력된 `resultList`가 다음과 같을 경우:
+            ```java
+            {5, 2, 9, 1, 5, 6}
+            ```
+            출력 결과는 다음과 같습니다:
+            ```java
+            [9, 6, 5, 5, 2, 1]
+            ```
+
+            ### 장단점
+
+            #### 장점:
+            - **가독성**: 코드가 매우 가독성이 높으며, 최신 Java 기능인 Stream API를 사용합니다.
+            - **간결성**: 내림차순 정렬을 위해 최소한의 코드로 처리가 가능합니다.
+
+            #### 단점:
+            - **박싱 및 언박싱 비용**: `boxed()`와 `mapToInt()` 사용으로 인해 박싱과 언박싱 과정에서 성능 저하가 있을 수 있습니다.
+            - **성능 저하**: 대규모 배열에서는 스트림 작업의 성능이 다소 떨어질 수 있습니다.
+            

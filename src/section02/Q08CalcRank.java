@@ -43,6 +43,22 @@ public class Q08CalcRank {
         return answer;
     }
 
+    public String stdSolution(int[] resultList) {
+        String answer = "";
+
+        for (int n : resultList) {
+            int rank = 1;
+            for (int i = 0; i < resultList.length; i++) {
+                if (n < resultList[i]) {
+                    rank++;
+                }
+            }
+            answer += String.valueOf(rank) + " ";
+        }
+
+        return answer;
+    }
+
     public static void main(String[] args) {
         Q08CalcRank t = new Q08CalcRank();
         Scanner sc = new Scanner(System.in);
@@ -55,6 +71,7 @@ public class Q08CalcRank {
         }
 
         System.out.println(t.solution(resultList));
+        System.out.println(t.stdSolution(resultList));
         sc.close();
     }
 }

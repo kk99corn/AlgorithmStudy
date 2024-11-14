@@ -45,5 +45,6 @@ public class Q05ContinuousNumber {
         int n = sc.nextInt();
 
         System.out.println(t.solution(n));
+        sc.close();
     }
 }

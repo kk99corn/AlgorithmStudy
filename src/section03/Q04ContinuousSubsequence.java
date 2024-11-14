@@ -54,5 +54,6 @@ public class Q04ContinuousSubsequence {
         }
 
         System.out.println(t.solution(n, m, arr));
+        sc.close();
     }
 }

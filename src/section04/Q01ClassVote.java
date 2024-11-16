@@ -42,7 +42,6 @@ public class Q01ClassVote {
   public static void main(String[] args) {
     Q01ClassVote t = new Q01ClassVote();
     Scanner sc = new Scanner(System.in);
-    int n = sc.nextInt();
     String voteList = sc.next();
 
     System.out.println(t.solution(voteList));

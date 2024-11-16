@@ -194,4 +194,129 @@
                     System.out.println("최대 합: " + maxSumSubarray(arr, k)); // 결과 출력
                 }
             }
+    - Section 4
+        - 01: 학급 회장(해쉬)
+            - 주요 내용
+                ## HashMap 주요 메서드 사용법
+                `HashMap`은 키-값 쌍을 저장하는 컬렉션으로, 빠른 데이터 검색, 삽입, 삭제를 가능하게 합니다. 이 문서에서는 알고리즘 문제 풀이 시 자주 사용하는 주요 메서드들에 대해 설명합니다.
+
+                ## 주요 메서드 정리
+
+                ### 1. `put(K key, V value)`
+                - **설명**: 지정된 키와 값을 맵에 추가합니다. 만약 키가 이미 존재하는 경우, 해당 키에 대한 값을 새로운 값으로 덮어씁니다.
+                - **사용 예시**:
+                ```java
+                HashMap<String, Integer> map = new HashMap<>();
+                map.put("apple", 3);
+                map.put("banana", 2);
+                ```
+
+                ### 2. `get(Object key)`
+                - **설명**: 지정된 키에 대응하는 값을 반환합니다. 만약 키가 존재하지 않으면 `null`을 반환합니다.
+                - **사용 예시**:
+                ```java
+                int value = map.get("apple"); // 3 반환
+                ```
+
+                ### 3. `containsKey(Object key)`
+                - **설명**: 지정된 키가 맵에 존재하는지 여부를 확인합니다. 주로 값의 유무를 빠르게 판단할 때 사용됩니다.
+                - **사용 예시**:
+                ```java
+                if (map.containsKey("apple")) {
+                    System.out.println("Key exists");
+                }
+                ```
+
+                ### 4. `containsValue(Object value)`
+                - **설명**: 지정된 값이 맵에 존재하는지 여부를 확인합니다. 특정 값이 맵 내에 존재하는지 검사할 때 사용됩니다.
+                - **사용 예시**:
+                ```java
+                if (map.containsValue(3)) {
+                    System.out.println("Value exists");
+                }
+                ```
+
+                ### 5. `remove(Object key)`
+                - **설명**: 지정된 키와 해당 값을 맵에서 제거합니다. 키가 존재하지 않는다면 아무 일도 일어나지 않습니다.
+                - **사용 예시**:
+                ```java
+                map.remove("banana"); // "banana" 키와 그 값 제거
+                ```
+
+                ### 6. `size()`
+                - **설명**: 맵에 포함된 키-값 쌍의 개수를 반환합니다. 맵이 비어 있는지 확인하거나, 현재 저장된 데이터의 양을 확인할 때 유용합니다.
+                - **사용 예시**:
+                ```java
+                int size = map.size(); // 현재 맵에 있는 항목 수 반환
+                ```
+
+                ### 7. `isEmpty()`
+                - **설명**: 맵이 비어 있는지 여부를 확인합니다. 요소가 없는 상태인 경우 `true`를 반환합니다.
+                - **사용 예시**:
+                ```java
+                if (map.isEmpty()) {
+                    System.out.println("Map is empty");
+                }
+                ```
+
+                ### 8. `keySet()`
+                - **설명**: 맵에 포함된 모든 키를 `Set` 형태로 반환합니다. 이를 통해 반복문을 사용해 모든 키를 순회할 수 있습니다.
+                - **사용 예시**:
+                ```java
+                for (String key : map.keySet()) {
+                    System.out.println(key + " : " + map.get(key));
+                }
+                ```
+
+                ### 9. `values()`
+                - **설명**: 맵에 포함된 모든 값을 `Collection` 형태로 반환합니다. 이를 통해 값들만 모아 반복할 수 있습니다.
+                - **사용 예시**:
+                ```java
+                for (Integer value : map.values()) {
+                    System.out.println(value);
+                }
+                ```
+
+                ### 10. `entrySet()`
+                - **설명**: 맵에 포함된 모든 키-값 쌍을 `Set` 형태로 반환합니다. 각 키와 값을 동시에 처리하고자 할 때 사용됩니다.
+                - **사용 예시**:
+                ```java
+                for (Map.Entry<String, Integer> entry : map.entrySet()) {
+                    System.out.println(entry.getKey() + " : " + entry.getValue());
+                }
+                ```
+
+                ## 활용 팁
+                - `containsKey()`는 특정 키가 존재하는지 확인하여 값을 가져올 때 `null` 반환을 방지하는 데 유용합니다.
+                - `entrySet()`을 사용하면 키와 값을 동시에 효율적으로 접근할 수 있어 맵을 순회하는 과정에서 유리합니다.
+
+                ## 예제 코드
+                다음은 `HashMap`을 사용하여 특정 작업을 수행하는 간단한 예제입니다:
+
+                ```java
+                public class HashMapExample {
+                    public static void main(String[] args) {
+                        HashMap<String, Integer> map = new HashMap<>();
+                        map.put("apple", 3);
+                        map.put("banana", 2);
+                        map.put("orange", 5);
+
+                        if (map.containsKey("apple")) {
+                            System.out.println("Apple count: " + map.get("apple"));
+                        }
+
+                        map.remove("banana");
+                        System.out.println("Map size after removal: " + map.size());
+
+                        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+                            System.out.println(entry.getKey() + " : " + entry.getValue());
+                        }
+                    }
+                }
+                ```
+
+                ## 결론
+                `HashMap`은 키-값 쌍의 데이터를 효율적으로 관리할 수 있는 강력한 자료구조입니다. 위에 설명한 주요 메서드들을 활용하면 대부분의 알고리즘 문제에서 간단하고 빠르게 데이터를 처리할 수 있습니다. 각 메서드의 특성을 잘 이해하고 적절히 활용해 보세요!
+
+
             

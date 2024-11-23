@@ -317,6 +317,70 @@
 
                 ## 결론
                 `HashMap`은 키-값 쌍의 데이터를 효율적으로 관리할 수 있는 강력한 자료구조입니다. 위에 설명한 주요 메서드들을 활용하면 대부분의 알고리즘 문제에서 간단하고 빠르게 데이터를 처리할 수 있습니다. 각 메서드의 특성을 잘 이해하고 적절히 활용해 보세요!
+    - Section 6
+        - 01: 선택정렬
+            - 주요 내용
+                ## Selection Sort
+
+                Selection Sort는 정렬 알고리즘 중 하나로, 리스트를 반복적으로 순회하며 가장 작은(혹은 큰) 요소를 찾아 리스트의 앞부분부터 정렬하는 방식으로 동작합니다.
+
+                ## 특징
+                - **시간 복잡도**: O(n²)
+                - **공간 복잡도**: O(1) (제자리 정렬)
+                - **장점**: 구현이 간단하고, 비교 횟수가 일정함.
+                - **단점**: 데이터가 많을수록 비효율적.
+
+                ## 작동 원리
+                1. 주어진 리스트에서 가장 작은 값을 찾는다.
+                2. 해당 값을 리스트의 첫 번째 요소와 교환한다.
+                3. 두 번째 요소부터 다시 반복한다.
+                4. 리스트가 모두 정렬될 때까지 위 과정을 반복한다.
+
+                ## 구현 예제 (Java)
+
+                아래는 Java로 구현한 Selection Sort 코드입니다:
+
+                ```java
+                public class SelectionSort {
+
+                    public static void selectionSort(int[] arr) {
+                        int n = arr.length;
+
+                        // 배열을 순회하며 정렬
+                        for (int i = 0; i < n - 1; i++) {
+                            // 현재 범위에서 가장 작은 값의 인덱스를 찾음
+                            int minIndex = i;
+                            for (int j = i + 1; j < n; j++) {
+                                if (arr[j] < arr[minIndex]) {
+                                    minIndex = j;
+                                }
+                            }
+
+                            // 가장 작은 값을 현재 위치와 교환
+                            int temp = arr[minIndex];
+                            arr[minIndex] = arr[i];
+                            arr[i] = temp;
+                        }
+                    }
+
+                    public static void main(String[] args) {
+                        int[] arr = {64, 25, 12, 22, 11};
+
+                        System.out.println("Before Sorting:");
+                        for (int num : arr) {
+                            System.out.print(num + " ");
+                        }
+
+                        selectionSort(arr);
+
+                        System.out.println("\n\nAfter Sorting:");
+                        for (int num : arr) {
+                            System.out.print(num + " ");
+                        }
+                    }
+                }
+
+                
 
 
             

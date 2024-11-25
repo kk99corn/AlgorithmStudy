@@ -379,6 +379,72 @@
                         }
                     }
                 }
+        - 02: 버블정렬
+            - 주요 내용
+                ## Bubble Sort
+
+                Bubble Sort는 정렬 알고리즘 중 하나로, 인접한 두 요소를 비교하여 필요한 경우 위치를 교환하며 정렬을 수행합니다. 작은 값을 위로 "버블"처럼 올리는 과정에서 이름이 유래되었습니다.
+
+                ## 특징
+                - **시간 복잡도**: O(n²) (최악 및 평균), O(n) (최선, 이미 정렬된 경우)
+                - **공간 복잡도**: O(1) (제자리 정렬)
+                - **장점**: 구현이 간단하고 이해하기 쉬움.
+                - **단점**: 데이터 크기가 클수록 비효율적이며, 선택 정렬보다 비교 횟수가 많음.
+
+                ## 작동 원리
+                1. 배열을 순회하며 인접한 두 요소를 비교한다.
+                2. 두 요소의 크기가 잘못된 순서라면 교환한다.
+                3. 배열의 끝까지 반복한 후, 가장 큰 값이 정렬된다.
+                4. 나머지 요소들에 대해 이 과정을 반복한다.
+
+                ## 구현 예제 (Java)
+
+                아래는 Java로 구현한 Bubble Sort 코드입니다:
+
+                ```java
+                public class BubbleSort {
+
+                    public static void bubbleSort(int[] arr) {
+                        int n = arr.length;
+
+                        // 배열을 순회하며 정렬
+                        for (int i = 0; i < n - 1; i++) {
+                            boolean swapped = false;
+
+                            // 인접한 두 요소를 비교 및 교환
+                            for (int j = 0; j < n - 1 - i; j++) {
+                                if (arr[j] > arr[j + 1]) {
+                                    // 요소 교환
+                                    int temp = arr[j];
+                                    arr[j] = arr[j + 1];
+                                    arr[j + 1] = temp;
+                                    swapped = true;
+                                }
+                            }
+
+                            // 교환이 발생하지 않았으면 정렬 완료
+                            if (!swapped) {
+                                break;
+                            }
+                        }
+                    }
+
+                    public static void main(String[] args) {
+                        int[] arr = {64, 34, 25, 12, 22, 11, 90};
+
+                        System.out.println("Before Sorting:");
+                        for (int num : arr) {
+                            System.out.print(num + " ");
+                        }
+
+                        bubbleSort(arr);
+
+                        System.out.println("\n\nAfter Sorting:");
+                        for (int num : arr) {
+                            System.out.print(num + " ");
+                        }
+                    }
+                }
 
                 
 

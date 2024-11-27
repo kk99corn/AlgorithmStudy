@@ -480,8 +480,73 @@
                             // 현재 값보다 큰 값들을 한 칸씩 뒤로 이동
                             while (j >= 0 && arr[j] > key) {
                                 arr[j + 1] = arr[j
+        - 04: LRU
+            - 주요 내용
+                ## LRU (Least Recently Used) Cache Algorithm
 
-                
+                LRU (Least Recently Used) 알고리즘은 캐시 교체 정책 중 하나로, 가장 오랫동안 사용되지 않은 데이터를 캐시에서 제거하여 새로운 데이터를 저장할 공간을 확보합니다. 이를 통해 제한된 캐시 공간을 효율적으로 사용할 수 있습니다.
+
+                ## 특징
+                - **시간 복잡도**: O(1) (get 및 put 연산, HashMap과 LinkedList를 사용한 구현)
+                - **공간 복잡도**: O(capacity) (캐시 크기에 비례)
+                - **장점**: 최근에 사용된 데이터를 캐시에 유지하여 성능 향상.
+                - **단점**: 캐시 크기와 데이터 구조 관리 비용이 추가됨.
+
+                ## 작동 원리
+                1. 데이터를 요청하면, 캐시에 존재하는지 확인합니다.
+                - 존재하면 데이터를 반환하고, 해당 항목을 가장 최근 사용된 상태로 갱신합니다.
+                - 존재하지 않으면 새로운 데이터를 추가합니다.
+                2. 캐시가 가득 찬 경우, 가장 오래 사용되지 않은 항목을 제거합니다.
+
+                ---
+
+                ## 구현 예제 (Java)
+
+                아래는 Java로 구현한 LRU Cache 코드입니다:
+
+                ```java
+                import java.util.*;
+
+                class LRUCache {
+
+                    private final int capacity;
+                    private final Map<Integer, Integer> cache;
+                    private final LinkedHashMap<Integer, Integer> order;
+
+                    public LRUCache(int capacity) {
+                        this.capacity = capacity;
+                        this.cache = new LinkedHashMap<>(capacity, 0.75f, true);
+                    }
+
+                    public int get(int key) {
+                        if (!cache.containsKey(key)) {
+                            return -1; // 캐시에 없으면 -1 반환
+                        }
+                        return cache.get(key); // 값 반환 및 접근 순서 갱신
+                    }
+
+                    public void put(int key, int value) {
+                        if (cache.size() >= capacity && !cache.containsKey(key)) {
+                            int oldestKey = cache.keySet().iterator().next(); // 가장 오래된 키 찾기
+                            cache.remove(oldestKey); // 가장 오래된 항목 제거
+                        }
+                        cache.put(key, value); // 새 값 추가 또는 기존 값 갱신
+                    }
+
+                    public static void main(String[] args) {
+                        LRUCache lru = new LRUCache(3);
+
+                        lru.put(1, 10);
+                        lru.put(2, 20);
+                        lru.put(3, 30);
+                        System.out.println(lru.get(1)); // 10
+                        lru.put(4, 40); // 캐시가 꽉 찼으므로 2 제거
+                        System.out.println(lru.get(2)); // -1 (제거된 값)
+                        lru.put(5, 50);
+                        System.out.println(lru.get(3)); // -1 (제거된 값)
+                    }
+                }
+
 
 
             

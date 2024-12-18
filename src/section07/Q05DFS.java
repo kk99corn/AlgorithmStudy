@@ -1,12 +1,9 @@
 package section07;
 
-import java.util.*;
-
 /*
-section: 06-05
+section: 07-05
 title: 이진트리순회(DFS)
 */
-
 class Node {
     int data;
     Node lt;

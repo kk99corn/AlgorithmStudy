@@ -3,10 +3,9 @@ package section07;
 import java.util.*;
 
 /*
-section: 06-05
-title: 이진트리순회(DFS)
+section: 07-08
+title: 송아지 찾기 1(BFS)
 */
-
 public class Q08Calf {
 
     int answer = 0;
